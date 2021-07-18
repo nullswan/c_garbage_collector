@@ -9,6 +9,6 @@ jobs:
           - name: install valgrind
             run:  sudo apt update && sudo apt install -y valgrind
           - name: create folder
-            run: mkdir -p gc_collector && mv srcs includes Makefile gc_collector && cd gc_collector
+            run: mkdir -p gc_collector && mv srcs includes Makefile gc_collector
           - name: make tests
-            run:  make tests
+            run:  cd gc_collector && make tests
