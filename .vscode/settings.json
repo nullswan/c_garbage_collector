@@ -1,0 +1,9 @@
+{
+	"files.exclude": {
+		"**/.a": true,
+		".vscode": true,
+		"*.md": true,
+		"objs": true,
+		".git*": true
+	}
+}

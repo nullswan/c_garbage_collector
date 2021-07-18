@@ -1,0 +1,4 @@
+*.a
+*.o
+objs/
+tests_bin

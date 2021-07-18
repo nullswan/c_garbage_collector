@@ -1,0 +1,3 @@
+[submodule "c_hashtable"]
+	path = c_hashtable
+	url = git@github.com:c3b5aw/c_hashtable.git
