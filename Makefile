@@ -35,7 +35,7 @@ ERR_MSG		= "$(PREFIX_MSG)[\\033[31m!\\033[0m]"
 objs/%.o	: srcs/%.c
 ifeq ($(wildcard $(HASHTABLE_DIR)),)
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
-	@	git clone git@github.com:c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
+	@	git https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
 endif
 			@	mkdir -p $(dir $@)
 			@	$(PRINTER) "$(CMP_MSG) Compiling $<\n"
