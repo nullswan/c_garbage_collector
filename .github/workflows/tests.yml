@@ -10,6 +10,6 @@ jobs:
             run:  sudo apt install -y valgrind
           - name: create folder
             run: |
-              mkdir -p gc_collector && mv c_garbage_collector gc_collector
+              mkdir -p gc_collector && ls -la
           - name: make tests
             run:  make tests
