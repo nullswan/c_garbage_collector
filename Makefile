@@ -33,7 +33,7 @@ SCS_MSG		= "$(PREFIX_MSG)[\\033[32mSUC\\033[0m]"
 ERR_MSG		= "$(PREFIX_MSG)[\\033[31m!\\033[0m]"
 
 objs/%.o	: srcs/%.c
-ifeq ($(wildcard $(HASHTABLE_DIR)),)
+ifeq ("$(wildcard $(HASHTABLE_DIR))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
 	@	git clone https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
 endif
