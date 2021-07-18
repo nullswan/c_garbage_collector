@@ -11,7 +11,7 @@ jobs:
           - name: create folder
             run: mkdir -p gc_collector
           - name: move assets
-            run: mv srcs includes Makefile gc_collector && ls -laR
+            run: mv srcs includes tests Makefile gc_collector && ls -laR
           - name: gitclone
             run: git clone https://github.com/c3b5aw/c_hashtable.git hashtable
           - name: make tests
