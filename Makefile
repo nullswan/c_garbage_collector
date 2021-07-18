@@ -21,7 +21,7 @@ OBJS		 = $(addprefix objs/, $(SRCS:.c=.o))
 
 NAME_TEST	= tests_bin
 
-CFLAGS		= -Wall -Wextra -Werror -O3
+CFLAGS		= -Wall -Wextra -Werror -O3 -fPIE
 CSANITIZE	= -g -fsanitize=address
 PRINTER		= printf
 
