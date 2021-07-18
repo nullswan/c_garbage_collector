@@ -7,9 +7,12 @@ jobs:
         steps:
           - uses: actions/checkout@v2
           - name: install valgrind
-            run:  sudo apt install -y valgrind
+            run:  sudo apt update && sudo apt install -y valgrind
           - name: create folder
-            run: |
-              mkdir -p gc_collector && mv c_garbage_collector gc_collector
+            run: mkdir -p gc_collector
+          - name: move assets
+            run: mv srcs includes tests Makefile gc_collector && ls -laR
+          - name: gitclone
+            run: git clone https://github.com/c3b5aw/c_hashtable.git hashtable
           - name: make tests
-            run:  make tests
+            run:  cd gc_collector && make tests
