@@ -8,5 +8,8 @@ jobs:
           - uses: actions/checkout@v2
           - name: install valgrind
             run:  sudo apt install -y valgrind
+          - name: create folder
+            run: |
+              mkdir -p gc_collector && mv c_garbage_collector gc_collector
           - name: make tests
             run:  make tests
