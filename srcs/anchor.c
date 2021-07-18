@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:51:53 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/18 03:17:14 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/18 09:51:39 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_hashtable	**gc_anchor(void)
 {
-	static t_hashtable	*hashtable = false;
+	static t_hashtable	*hashtable = 0;
 
 	return (&hashtable);
 }
