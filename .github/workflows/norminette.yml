@@ -1,0 +1,11 @@
+name: norme
+on: [ push ]
+jobs:
+    norme_test:
+        runs-on: ubuntu-latest
+        name: norminette
+        steps:
+          - uses: actions/checkout@v2
+          - uses: alexandregv/norminette-action@v3
+            with:
+              flags: 'srcs includes tests'

@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:35:09 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/18 09:39:02 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/18 09:42:20 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 bool	basic_tests(void);
 bool	free_tests(void);
 bool	malloc_tests(void);
-void	msg(char *test_name, char *error);
 bool	error(char *test_name, char *error);
 bool	success(char *test_name, char *error);
 
