@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:35:09 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/18 09:42:20 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/18 09:46:00 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define TEST_BASIC_1 "CREATE_AND_DESTROY_GC"
 # define TEST_BASIC_2 "CREATE_NULL_GC"
 # define TEST_BASIC_3 "TEST_ITOA_BASE"
+# define TEST_BASIC_4 "TEST_ITER"
 # define TEST_FREE_1 "FREE_ON_NILGC"
 # define TEST_FREE_2 "FREE_UNEXISTING"
 # define TEST_MALLOC_1 "MALLOC_ONE_AND_DESTROY"

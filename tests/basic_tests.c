@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 03:07:19 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/18 04:03:10 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/18 09:48:58 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ static bool	test_itoa_base(void)
 	return (success(TEST_BASIC_3, SUC));
 }
 
+static bool	iter_test(void)
+{
+	void	*ptr;
+	int		i;
+
+	ptr = galloc(100);
+	gfree(ptr);
+	i = -1;
+	while (++i < 100)
+		ptr = galloc(100);
+	gc_destroy();
+	return (success(TEST_BASIC_4, SUC));
+}
+
 bool	basic_tests(void)
 {
 	if (!create_and_destroy_gc())
@@ -52,6 +66,8 @@ bool	basic_tests(void)
 	if (!create_null_gc())
 		return (false);
 	if (!test_itoa_base())
+		return (false);
+	if (!iter_test())
 		return (false);
 	return (true);
 }
