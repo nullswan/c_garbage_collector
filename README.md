@@ -7,7 +7,7 @@
 ## usage
 
 ```C
-#include "includes/gcollector.h
+#include "includes/gcollector.h"
 
 int	main(void)
 {
