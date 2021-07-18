@@ -7,11 +7,9 @@ jobs:
         steps:
           - uses: actions/checkout@v2
           - name: install valgrind
-            run:  sudo apt install -y valgrind
+            run:  sudo apt update && sudo apt install -y valgrind
           - name: create folder
             run: |
-              mkdir -p gc_collector
-              mv * gc_collector
-              ls -la
+              mkdir -p gc_collector && mv -f * gc_collector && ls -la
           - name: make tests
             run:  make tests
