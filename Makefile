@@ -35,22 +35,26 @@ objs/%.o	: srcs/%.c
 			@	$(PRINTER) "$(CMP_MSG) Compiling $<\n"
 			@	$(CC) $(CFLAGS) -c $< -o $@
 
-__lib_deps	:
+all		:	$(NAME)
+
+$(NAME)	: $(OBJS)
+	@	$(PRINTER) "HERE"
 ifeq ("$(wildcard $(HASHTABLE_DIR))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
 	@	git clone https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
+endif
+	@	$(PRINTER) "HERE 2"
+ifeq ("$(wildcard $(HASHTABLE_BIN))", "")
+	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_BIN.\n"
 	@	$(MAKE) -sC $(HASHTABLE_DIR)
 endif
-
-all		:	$(NAME)
-
-$(NAME)	:	$(OBJS) __lib_deps
-		@	$(LINKER) $(NAME) $(OBJS) $(HASHTABLE_BIN)
-		@	$(PRINTER) "$(SCS_MSG) $(NAME) @ built !\n"
+	@	$(LINKER) $(NAME) $(OBJS) $(HASHTABLE_BIN)
+	@	$(PRINTER) "$(SCS_MSG) $(NAME) @ built !\n"
 
 re		:	fclean all
 
 fclean	:	clean
+		@	$(PRINTER) "$(INF_MSG) Deleting bins...\n"
 		@	$(RM) $(NAME)
 		@	$(RM) $(NAME_TEST)
 
