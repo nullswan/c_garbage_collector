@@ -42,7 +42,6 @@ ifeq ("$(wildcard $(HASHTABLE_DIR))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
 	@	git clone https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
 endif
-	@	$(PRINTER) "HERE 2"
 ifeq ("$(wildcard $(HASHTABLE_BIN))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_BIN.\n"
 	@	$(MAKE) -sC $(HASHTABLE_DIR)
