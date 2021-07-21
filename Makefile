@@ -3,7 +3,7 @@ PREFIX_MSG 	= "[LIB-GCOLLECTOR]"
 SRCS 		= anchor.c free.c hash.c \
 			malloc.c methods.c utils.c
 
-TEST_SRCS 	= tests/basic_tests.c tests/free_tests.c \
+TEST_SRCS 	= tests/basic_tests.c tests/free_tests.c tests/overlap_tests.c\
 			tests/main.c  tests/malloc_tests.c tests/utils.c
 
 HASHTABLE_DIR = ../hashtable
