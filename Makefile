@@ -44,7 +44,7 @@ endif
 
 all		:	$(NAME)
 
-$(NAME)	:	__lib_deps $(OBJS)
+$(NAME)	:	$(OBJS) __lib_deps
 		@	$(LINKER) $(NAME) $(OBJS) $(HASHTABLE_BIN)
 		@	$(PRINTER) "$(SCS_MSG) $(NAME) @ built !\n"
 
