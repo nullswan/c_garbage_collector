@@ -1,5 +1,3 @@
-## check if libhashtable exist in parent directory, otherwise clone it
-
 NAME		= lgcollector.a
 PREFIX_MSG 	= "[LIB-GCOLLECTOR]"
 SRCS 		= anchor.c free.c hash.c \
@@ -37,17 +35,17 @@ objs/%.o	: srcs/%.c
 			@	$(PRINTER) "$(CMP_MSG) Compiling $<\n"
 			@	$(CC) $(CFLAGS) -c $< -o $@
 
-lib_exists	:
+__lib_deps	:
 ifeq ("$(wildcard $(HASHTABLE_DIR))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
 	@	git clone https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
+	@	$(MAKE) -sC $(HASHTABLE_DIR)
 endif
 
 all		:	$(NAME)
 
-$(NAME)	: 	lib_exists $(OBJS)
-		@	$(MAKE) -sC $(HASHTABLE_DIR)
-		@	$(LINKER) $@ $^ $(HASHTABLE_BIN)
+$(NAME)	:	__lib_deps $(OBJS)
+		@	$(LINKER) $(NAME) $(OBJS) $(HASHTABLE_BIN)
 		@	$(PRINTER) "$(SCS_MSG) $(NAME) @ built !\n"
 
 re		:	fclean all
@@ -60,8 +58,8 @@ clean	:
 		@	$(PRINTER) "$(INF_MSG) Deleting assets...\n"
 		@	$(RM) -r $(OBJS_DIR)
 
-tests: re
+tests	: re
 		@	$(CC) $(CFLAGS) $(TEST_SRCS) -I includes $(NAME) $(HASHTABLE_BIN) -o $(NAME_TEST)
 		@	./tests/tester.sh
 
-.PHONY	:	fclean clean re all
+.PHONY	:	fclean clean re all tests
