@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:52:10 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/18 09:36:20 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/21 17:49:41 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	*galloc(size_t size)
 	char				*key;
 
 	if (!gc_anchor_exist())
-		gc_new(__DEFAULT_GC_SIZE__);
+		if (!gc_new(__DEFAULT_GC_SIZE__))
+			return (0);
 	mem = malloc(size);
 	if (!mem)
 		return (0);
