@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:52:10 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/21 17:49:41 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/21 17:55:44 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,33 @@
 #include "../includes/gcollector_hash.h"
 #include "../includes/gcollector_utils.h"
 
+static void	*__assign_error(char **key, void **mem)
+{
+	if (key && *key)
+	{
+		free(*key);
+		*key = 0;
+	}
+	if (mem && *mem)
+	{
+		free(*mem);
+		*mem = 0;
+	}
+	return (0);
+}
+
+static void	*__assign_new_node(t_hashtable **hashtable, char **key, void **mem)
+{
+	t_hashtable_item	*item;
+
+	item = hashtable_insert(hashtable, *key, *mem);
+	if (item)
+		return (item->value);
+	return (__assign_error(key, mem));
+}
+
 void	*galloc(size_t size)
 {
-	t_hashtable			**h;
-	t_hashtable_item	*item;
 	void				*mem;
 	char				*key;
 
@@ -32,13 +55,6 @@ void	*galloc(size_t size)
 	__memset(mem, 0, size);
 	key = __gc_hash_function(mem);
 	if (!key)
-	{
-		free(mem);
-		return (0);
-	}
-	h = gc_anchor();
-	item = hashtable_insert(h, key, mem);
-	if (!item)
-		return (0);
-	return (item->value);
+		return (__assign_error(&key, 0));
+	return (__assign_new_node(gc_anchor(), &key, &mem));
 }
