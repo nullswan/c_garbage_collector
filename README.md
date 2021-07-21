@@ -13,8 +13,25 @@ int	main(void)
 {
 	void	*ptr;
 
+	// gc_new(100); - gc malloc bucket environnement start size
 	ptr = galloc(100);
+	// ptr = 0xMEMADDR;
 	gfree(ptr);
+	// ptr = 0;
+	for (int i = 0; i < 100; i++)
+		ptr = galloc(100);
+	gc_destroy();
+}
+
+int	main(void)
+{
+	void	*ptr;
+
+	// gc_new(100); - gc malloc bucket environnement start size
+	ptr = galloc(100);
+	// ptr = 0xMEMADDR;
+	gree(ptr);
+	// ptr = 0xMEMADDR;
 	for (int i = 0; i < 100; i++)
 		ptr = galloc(100);
 	gc_destroy();
@@ -33,7 +50,13 @@ view_hashtable
 
 ### default methods
 ```C
+// free mem, destroy node and set *ptr to 0.
 bool	gfree(void **ptr);
+
+// free mem, destroy node.
+bool	gree(void *ptr);
+
+// allocate mem, create node.
 void	*galloc(size_t size);
 ```
 

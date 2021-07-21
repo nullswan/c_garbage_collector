@@ -6,7 +6,7 @@
 /*   By: c3b5aw <dev@c3b5aw.dev>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 02:35:09 by c3b5aw            #+#    #+#             */
-/*   Updated: 2021/07/21 18:29:29 by c3b5aw           ###   ########.fr       */
+/*   Updated: 2021/07/21 18:52:16 by c3b5aw           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define TEST_BASIC_4 "TEST_ITER"
 # define TEST_FREE_1 "FREE_ON_NILGC"
 # define TEST_FREE_2 "FREE_UNEXISTING"
+# define TEST_FREE_3 "GREE TEST"
 # define TEST_MALLOC_1 "MALLOC_ONE_AND_DESTROY"
 # define TEST_MALLOC_2 "MALLOC_ONE_AND_MANUAL_FREE"
 # define TEST_MALLOC_3 "MALLOC_GC_OVERFLOW"
