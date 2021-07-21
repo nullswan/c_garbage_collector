@@ -33,23 +33,29 @@ SCS_MSG		= "$(PREFIX_MSG)[\\033[32mSUC\\033[0m]"
 ERR_MSG		= "$(PREFIX_MSG)[\\033[31m!\\033[0m]"
 
 objs/%.o	: srcs/%.c
+			@	mkdir -p $(dir $@)
+			@	$(PRINTER) "$(CMP_MSG) Compiling $<\n"
+			@	$(CC) $(CFLAGS) -c $< -o $@
+
+lib_exists	:
 ifeq ("$(wildcard $(HASHTABLE_DIR))", "")
 	@	$(PRINTER) "$(ERR_MSG) Unable to find HASHTABLE_DIR.\n"
 	@	git clone https://github.com/c3b5aw/c_hashtable.git $(HASHTABLE_DIR)
 endif
-			@	mkdir -p $(dir $@)
-			@	$(PRINTER) "$(CMP_MSG) Compiling $<\n"
-			@	$(CC) $(CFLAGS) -c $< -o $@
+
 all		:	$(NAME)
-$(NAME)	: 	$(OBJS)
+
+$(NAME)	: 	lib_exists $(OBJS)
 		@	$(MAKE) -sC $(HASHTABLE_DIR)
 		@	$(LINKER) $@ $^ $(HASHTABLE_BIN)
 		@	$(PRINTER) "$(SCS_MSG) $(NAME) @ built !\n"
 
 re		:	fclean all
+
 fclean	:	clean
 		@	$(RM) $(NAME)
 		@	$(RM) $(NAME_TEST)
+
 clean	:
 		@	$(PRINTER) "$(INF_MSG) Deleting assets...\n"
 		@	$(RM) -r $(OBJS_DIR)
